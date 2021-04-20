@@ -1,12 +1,13 @@
 import React, { useRef, useState } from "react"
-import { Card, Button, Form,  Alert } from "react-bootstrap"
+import { Card, Button, Form, Alert } from "react-bootstrap"
 import { useAuth } from "../context/AuthContext"
 
 function Signup() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const { signUp,currentUser } = useAuth()
+  const { signup, currentUser } = useAuth()
+
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -17,10 +18,12 @@ function Signup() {
       return setError("Passwords do not match")
     }
 
+    //alert(currentUser)
     try {
       setError("")
       setLoading(true)
-      await signUp(emailRef.current.value, passwordRef.current.value)
+      await signup(emailRef.current.value, passwordRef.current.value)
+    //  history.push("/")
     } catch {
       setError("Failed to create an account")
     }
@@ -31,8 +34,9 @@ function Signup() {
   return (
     <>
       <Card>
+        
         <Card.Body>
-          
+          {currentUser && currentUser.email}
           <h2 className="text-center mb-4">Signup</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
@@ -53,7 +57,6 @@ function Signup() {
             </Button>
           </Form>
         </Card.Body>
-        {currentUser && currentUser.email}
       </Card>
       <div className="w-100 text-center mt-2">Already have an account?Log In</div>
     </>

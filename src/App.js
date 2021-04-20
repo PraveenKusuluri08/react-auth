@@ -1,6 +1,7 @@
 import { Container } from "react-bootstrap"
 import Signup from "./components/Signup"
 import { AuthProvider } from "./context/AuthContext"
+
  function App() {
   return (
     <AuthProvider>
@@ -12,7 +13,7 @@ import { AuthProvider } from "./context/AuthContext"
           <Signup />
         </div>
       </Container>
-    </AuthProvider>
+     </AuthProvider>
   )
 }
 export default App
