@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import ProjectList from "../projects/ProjectList"
 import Notifications from "./Notifications"
 import { connect } from "react-redux"
-export class Dashboard extends Component {
+ class Dashboard extends Component {
   render() {
     console.log(this.props)
     const { projects } = this.props

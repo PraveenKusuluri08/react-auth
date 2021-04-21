@@ -1,0 +1,5 @@
+const ACTIONS={
+  CREATE_PROJECT :"CREATE_PROJECT"
+}
+
+export default ACTIONS
