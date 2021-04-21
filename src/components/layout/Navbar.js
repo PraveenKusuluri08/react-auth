@@ -1,28 +1,18 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { Nav, Navbar, NavDropdown } from "react-bootstrap"
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
+import React from 'react'
+import { Link } from 'react-router-dom'
+import SignedInLinks from './SignedInLinks'
+import SignedOutLinks from './SignedOutLinks'
 
-const NavBar = () => {
+const Navbar = () => {
   return (
-    <>
-      {/* <AppBar position="static">
-        <Toolbar>
-          <Link to="/" style={{ textDecoration: "none", color: "whitesmoke", fontSize: "25px" }}>
-            Praveen
-          </Link>
-        </Toolbar>
-      </AppBar> */}
-
-      <Navbar className="mr-auto" expand="lg" bg="dark" variant="dark">
-        <Link to="/" style={{ textDecoration: "none", color: "whitesmoke", fontSize: "25px" }}>
-          Praveen
-        </Link>
-
-      </Navbar>
-    </>
+    <nav className="nav-wrapper grey darken-2">
+      <div className="wrapper">
+        <Link to='/' className="left bg blue">PRAVEEN</Link>
+        <SignedInLinks />
+        <SignedOutLinks />
+      </div>
+    </nav>
   )
 }
 
-export default NavBar
+export default Navbar
