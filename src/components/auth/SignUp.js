@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Card, Button, Form, Alert } from "react-bootstrap"
+import { Card, Button, Form,} from "react-bootstrap"
 class SignUp extends Component {
   state = {
     email: "",
@@ -20,12 +20,12 @@ class SignUp extends Component {
   }
   render() {
     return (
-      <div className="container small ">
+      <div className="container small center align">
         <Card>
           <Card.Body>
             <h2 className="text-center mb-4">Signup</h2>
-
-            <Form.Label onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit}>
+            
               <Form.Group>
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="text" id="fName" required onChange={this.handleChange} />
@@ -46,7 +46,8 @@ class SignUp extends Component {
               <Button className="w-100" type="submit">
                 SignUp
               </Button>
-            </Form.Label>
+           
+            </Form>
           </Card.Body>
         </Card>
       </div>

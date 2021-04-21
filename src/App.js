@@ -6,11 +6,13 @@ import Dashboard from "./components/dashboard/Dashboard"
 import NavBar from "./components/layout/NavBar"
 import ProjectDetails from "./components/projects/ProjectDetails"
 import CreateProject from "./components/projects/CreateProject"
-
+import {Provider} from "react-redux"
+import store from "./store/store"
 function App() {
   return (
+    <Provider store={store}>
     <BrowserRouter>
-      <div className="App">
+      <div className=" app">
         <NavBar />
         <Switch>
           <Route exact path="/" component={Dashboard} />
@@ -22,6 +24,7 @@ function App() {
       </div>
       
     </BrowserRouter>
+    </Provider>
   )
 }
 export default App

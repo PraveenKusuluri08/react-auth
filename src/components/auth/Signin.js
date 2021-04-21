@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import { Card, Button, Form, Alert } from "react-bootstrap"
+import { Card, Button, Form,} from "react-bootstrap"
+
 class Signin extends Component {
-  state={
-   email:"",
-   password:""
+  constructor(props){
+  super(props)
+   this.state={
+      email:"",
+      password:""
+     }
   }
+  
   handleChange=(e)=>{
     this.setState({
       [e.target.type] :e.target.value
@@ -23,7 +28,7 @@ class Signin extends Component {
       <Card>
       <Card.Body>
         <h2 className="text-center mb-4">Signin</h2>
-        {this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
+       
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Label>Email</Form.Label>
