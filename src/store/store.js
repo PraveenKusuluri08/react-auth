@@ -1,7 +1,7 @@
 import rootReducer from "./rootReducer/rootReducer"
 import thunk from "redux-thunk"
-import {createStore} from "redux"
-import {applyMiddleware} from "react-redux"
+import {createStore,applyMiddleware} from "redux"
+
 
 const store =createStore(rootReducer,applyMiddleware(thunk))
 

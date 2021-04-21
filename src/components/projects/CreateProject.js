@@ -7,6 +7,7 @@ class CreateProject extends Component {
     title: "",
     content: "",
   }
+
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
@@ -14,10 +15,13 @@ class CreateProject extends Component {
     console.log([e.target.id])
     console.log(e.target.value)
   }
+
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
+    //console.log(this.state)
+    this.props.createProject(this.state)
   }
+
   render() {
     return (
       <div className="container small ">
@@ -45,5 +49,11 @@ class CreateProject extends Component {
     )
   }
 }
-const mapDispatchToProps = dispatch
-export default connect(mapD) (CreateProject)
+const mapDispatchToProps =(dispatch)=>{
+  return{
+    createProject : (project)=>dispatch(createProject(project))
+  }
+}
+
+
+export default connect(null,mapDispatchToProps) (CreateProject)

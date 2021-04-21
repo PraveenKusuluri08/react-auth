@@ -1,3 +1,5 @@
+
+import ACTION from "../../actions/actionTypes"
 const initialState = {
   projects:[
     {id: '1', title: 'help me find peach', content: 'blah blah blah'},
@@ -8,6 +10,10 @@ const initialState = {
 }
 
 const projectReducers = (state = initialState, action) => {
+  switch (action.type){
+    case ACTION.CREATE_PROJECT :
+      console.log(ACTION.CREATE_PROJECT,action.project)
+  }
   return state
 }
 
