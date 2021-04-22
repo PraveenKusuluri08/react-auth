@@ -19,7 +19,7 @@ export const createProject = (project) => {
       })
       .catch((error) => {
         console.log(error)
-        dispatch({type: ACTIONS.CREATE_PROJECT_FAILURE }, error)
+        dispatch({type: 'CREATE_PROJECT_ERROR' }, error)
       })
   }
 }

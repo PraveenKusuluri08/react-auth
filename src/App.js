@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import "./App.css"
-import Signin from "./components/auth/Signin"
+import SignIn from "./components/auth/SignIn"
 import SignUp from "./components/auth/SignUp"
 import Dashboard from "./components/dashboard/Dashboard"
 import NavBar from "./components/layout/NavBar"
@@ -17,7 +17,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/project/:id" component={ProjectDetails} />
-          <Route path="/signin" component={Signin} />
+          <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/create" component={CreateProject} />
         </Switch>
