@@ -1,12 +1,25 @@
-import ACTION from "./actionTypes"
+import ACTIONS from "./actionTypes"
 
 export const createProject = (project) => {
-  // return {
-  //   type: ACTION.CREATE_PROJECT,
-  //   project: project,
-  // }
-  return (dispatch, getState) => {
+  
+  return (dispatch, getState, { getFirestore }) => {
     // async calls
-    dispatch({ type: ACTION.CREATE_PROJECT, project })
+   const firestore = getFirestore()
+    firestore
+      .collection("projects")
+      .add({
+        ...project,
+        autherFirstName: "Praveen",
+        autherLastName: "Praveen",
+        autherId: 888,
+        createdAt: new Date(),
+      })
+      .then(() => {
+        dispatch({ type: ACTIONS.CREATE_PROJECT})
+      })
+      .catch((error) => {
+        console.log(error)
+        dispatch({type: ACTIONS.CREATE_PROJECT_FAILURE }, error)
+      })
   }
 }

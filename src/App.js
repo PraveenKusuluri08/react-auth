@@ -6,11 +6,11 @@ import Dashboard from "./components/dashboard/Dashboard"
 import NavBar from "./components/layout/NavBar"
 import ProjectDetails from "./components/projects/ProjectDetails"
 import CreateProject from "./components/projects/CreateProject"
-import {Provider} from "react-redux"
 import store from "./store/store"
+import {Provider} from "react-redux"
 function App() {
   return (
-    <Provider store={store}>
+   <Provider store={store}>
     <BrowserRouter>
       <div className=" app">
         <NavBar />
