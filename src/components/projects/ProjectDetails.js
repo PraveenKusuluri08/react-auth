@@ -1,10 +1,14 @@
 import React from "react"
 import { connect } from "react-redux"
 import { firestoreConnect } from "react-redux-firebase"
+import { Redirect } from "react-router"
 import { compose } from "redux"
 const ProjectDetails = (props) => {
   // route information to the particular id
-  const { project } = props
+  const { project,auth } = props
+
+  if(!auth.uid) return <Redirect to ="/signin/"/>
+
   if (project) {
     return (
       <div className="container section project-details">
@@ -38,6 +42,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     // project property on the props and project property right away front line 32
     project: project,
+    auth :state.firebase.auth
   }
 }
 export default compose(
