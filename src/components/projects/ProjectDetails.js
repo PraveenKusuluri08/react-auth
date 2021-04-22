@@ -17,7 +17,7 @@ const ProjectDetails = (props) => {
             <div>
               {project.autherFirstName} {project.autherLastName}
             </div>
-
+              <p>{project.autherId}</p>
             <div>1/01/2021</div>
           </div>
         </div>

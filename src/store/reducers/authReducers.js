@@ -1,9 +1,9 @@
 import ACTIONS from "../actions/actionTypes"
-const initState = {
+const initialState = {
   authError: null
 }
 
-const authReducer = (state = initState, action) => {
+const authReducer = (state = initialState, action) => {
   switch(action.type){
     case ACTIONS.LOGIN_FAILURE:
       console.log('login error');
@@ -14,8 +14,12 @@ const authReducer = (state = initState, action) => {
     case ACTIONS.LOGIN_SUCCESS:
       console.log('login success');
       return {
+        ...state,
         authError: null
       }
+      case ACTIONS.SIGNOUT_SUCCESS :
+        console.log("signout success");
+        return state
     default:
       return state
   }
