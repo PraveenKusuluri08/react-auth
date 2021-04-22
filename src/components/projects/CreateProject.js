@@ -7,7 +7,6 @@ class CreateProject extends Component {
     title: "",
     content: "",
   }
-
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
@@ -17,7 +16,7 @@ class CreateProject extends Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault()
+   // e.preventDefault()
     //console.log(this.state)
     this.props.createProject(this.state)
   }
