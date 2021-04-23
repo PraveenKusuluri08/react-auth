@@ -54,22 +54,22 @@ export const signOut = () => {
   }
 }
 
-export const signUp = (newuser) => {
+export const signUp = (newUser) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase()
     const firestore = getFirestore()
 
     firebase
       .auth()
-      .createUserWithEmailAndPassword(newuser.email, newuser.password)
+      .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then((res) => {
         return firestore
-          .collection("user")
+          .collection("users")
           .doc(res.user.uid)
           .set({
-            firstName: newuser.firstName,
-            lastName: newuser.lastName,
-            initials: newuser.firstName[0] + newuser.lastname[0],
+            fName: newUser.fName,
+            lName: newUser.lName,
+            initials: newUser.fName[0] + newUser.lName[0],
           })
       })
       .then(() => {

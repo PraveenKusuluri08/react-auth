@@ -14,8 +14,7 @@ class SignUp extends Component {
     this.setState({
       [e.target.id]: e.target.value,
     })
-    console.log([e.target.id])
-    console.log(e.target.value)
+  
   }
   handleSubmit = (e) => {
     e.preventDefault()
@@ -65,9 +64,10 @@ const mapStateToProps = (state) => {
     authError: state.auth.authError,
   }
 }
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    signUp: (details) => dispatch(signUp(details)),
+    signUp: (newUser) => dispatch(signUp(newUser)),
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

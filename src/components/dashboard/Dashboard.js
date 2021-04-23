@@ -7,7 +7,7 @@ import { compose } from "redux"
 import {Redirect} from "react-router-dom"
 class Dashboard extends Component {
   render() {
-    console.log(this.props)
+   // console.log(this.props)
     const { projects,auth } = this.props
 
     if(!auth.uid) return <Redirect to ="/signin/"/>
@@ -27,7 +27,7 @@ class Dashboard extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state)
+ // console.log(state)
   return {
     // in the console we have firestore and and ordered
     // ordered data is from the firestore we need to take that data
