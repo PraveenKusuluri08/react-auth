@@ -45,8 +45,38 @@ export const signOut = () => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase()
 
-    firebase.auth().signOut().then(() => {
-      dispatch({ type: ACTIONS.SIGNOUT_SUCCESS })
-    })
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        dispatch({ type: ACTIONS.SIGNOUT_SUCCESS })
+      })
+  }
+}
+
+export const signUp = (newuser) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firebase = getFirebase()
+    const firestore = getFirestore()
+
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(newuser.email, newuser.password)
+      .then((res) => {
+        return firestore
+          .collection("user")
+          .doc(res.user.uid)
+          .set({
+            firstName: newuser.firstName,
+            lastName: newuser.lastName,
+            initials: newuser.firstName[0] + newuser.lastname[0],
+          })
+      })
+      .then(() => {
+        dispatch({ type: ACTIONS.SIGNUP_SUCCESS })
+      })
+      .catch((error) => {
+        dispatch({ type: ACTIONS.SIGNUP_FAILURE, error })
+      })
   }
 }

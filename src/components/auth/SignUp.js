@@ -1,7 +1,8 @@
 import React, { Component } from "react"
-import { Card, Button, Form,} from "react-bootstrap"
-import {connect} from "react-redux"
+import { Card, Button, Form, Alert } from "react-bootstrap"
+import { connect } from "react-redux"
 import { Redirect } from "react-router"
+import { signUp } from "../../store/actions/actionCreators"
 class SignUp extends Component {
   state = {
     email: "",
@@ -18,18 +19,19 @@ class SignUp extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
+    //  console.log(this.state)
+    this.props.signUp(this.state)
   }
   render() {
-    const{auth}=this.props
-    if(auth.uid) return <Redirect to ="/"/>
+    const { auth, authError } = this.props
+    if (auth.uid) return <Redirect to="/" />
     return (
       <div className="container small center align">
         <Card>
           <Card.Body>
+            {authError ? <Alert variant="danger">{authError}</Alert> : null}
             <h2 className="text-center mb-4">Signup</h2>
             <Form onSubmit={this.handleSubmit}>
-            
               <Form.Group>
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="text" id="fName" required onChange={this.handleChange} />
@@ -50,7 +52,6 @@ class SignUp extends Component {
               <Button className="w-100" type="submit">
                 SignUp
               </Button>
-           
             </Form>
           </Card.Body>
         </Card>
@@ -58,9 +59,15 @@ class SignUp extends Component {
     )
   }
 }
-const mapStateToProps = state =>{
-  return{
-    auth:state.firebase.auth
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    authError: state.auth.authError,
   }
 }
-export default connect(mapStateToProps) (SignUp)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (details) => dispatch(signUp(details)),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
