@@ -12,14 +12,13 @@ class CreateProject extends Component {
     this.setState({
       [e.target.id]: e.target.value,
     })
-    console.log([e.target.id])
-    console.log(e.target.value)
   }
 
   handleSubmit = (e) => {
-   // e.preventDefault()
+   e.preventDefault()
     //console.log(this.state)
     this.props.createProject(this.state)
+    this.props.history.push("/")
   }
 
   render() {
@@ -56,7 +55,8 @@ class CreateProject extends Component {
 
 const mapStateToProps=(state)=>{
   return{
-    auth :state.firebase.auth
+    auth :state.firebase.auth,
+
   }
 }
 

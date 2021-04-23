@@ -3,14 +3,16 @@ import ACTIONS from "./actionTypes"
 export const createProject = (project) => {
   return (dispatch, getState, { getFirestore }) => {
     // async calls
-    const firestore = getFirestore()
+    const firestore = getFirestore();
+    const profile =getState().firebase.profile;
+    const authId = getState().firebase.auth.uid
     firestore
       .collection("projects")
       .add({
         ...project,
-        autherFirstName: "Praveen",
-        autherLastName: "Praveen",
-        autherId: 888,
+        autherFirstName: profile.fName,
+        autherLastName: profile.lName,
+        autherId: authId,
         createdAt: new Date(),
       })
       .then(() => {

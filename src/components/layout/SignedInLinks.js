@@ -4,18 +4,18 @@ import { NavLink } from 'react-router-dom'
 import {connect} from "react-redux"
 import {signOut} from "../../store/actions/actionCreators"
 const SignedInlinks = (props) => {
-  const{signOut} =props
+  const{signOut,profile} =props
   return (
     <div>
       <ul className="right dark ">
         <li><NavLink to='/create'>New Project</NavLink></li>
         <li><a onClick={signOut}> Log Out</a></li>
-        <li><NavLink to='/' className="btn-floating waves-effect waves-light">KP</NavLink></li>
+        <li><NavLink to='/' className="btn-floating waves-effect waves-light">{profile.initials}</NavLink></li>
       </ul>
     </div>
   )
 }
-const mapDispatchToProps=(dispatch)=>{
+ const mapDispatchToProps=(dispatch)=>{
   return{
     signOut:()=>dispatch(signOut())
   }
