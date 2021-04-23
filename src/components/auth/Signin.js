@@ -29,12 +29,10 @@ class Signin extends Component {
       <div className="container small center align">
         <Card>
           <Card.Body>
-            
+            {authError ? <Alert variant="danger">{authError}</Alert> : null}
             <h2 className="text-center mb-4">Signin</h2>
-           {authError ? <Alert variant="danger">{authError}</Alert> :null}
-
             <Form onSubmit={this.handleSubmit}>
-            <Form.Label >
+             
               <Form.Group>
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" id="email" required onChange={this.handleChange} />
@@ -43,14 +41,14 @@ class Signin extends Component {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" id="password" required onChange={this.handleChange} />
               </Form.Group>
+
               <Button className="w-100" type="submit">
-                Login
+                SignUp
               </Button>
-            </Form.Label>
             </Form>
           </Card.Body>
         </Card>
-      </div>
+        </div>
     )
   }
 }
