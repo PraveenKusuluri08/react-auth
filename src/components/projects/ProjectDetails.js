@@ -35,7 +35,7 @@ const ProjectDetails = (props) => {
 }
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id
-  // data which is getting from the firestore collections and list of present in the firestore
+  // data which is getting from the firestore collections and list of data present in the firestore
   const projects = state.firestore.data.projects
   // for individual project
   const project = projects ? projects[id] : null
